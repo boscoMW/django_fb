@@ -1,0 +1,9 @@
+*.pyc
+*.s3db
+*.swo
+*.swp
+media/*
+.DS_Store
+.coverage
+.idea
+local_settings.py
