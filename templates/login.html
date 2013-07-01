@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="row">
+  <div class="span4 offset4">
+    <div class="well">
+      <legend>Sign in</legend>
+      <form method="POST" action="." accept-charset="UTF-8">
+	{% csrf_token %}
+	{% if form.errors %}
+	<div class="alert alert-error">
+	  <a class="close" data-dismiss="alert" href="#">x</a>Incorrect Username or Password!
+	</div>
+	{% endif %}
+	<label>Username</label>{{ form.username }}
+	<label>Password</label>{{ form.password }}
+	<br/>
+	<button class="btn-info btn" type="submit">Login</button>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock  %}

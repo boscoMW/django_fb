@@ -1,4 +1,8 @@
-# Django settings for django_fb project.
+from os.path import join, abspath, dirname
+
+here = lambda *x: join(abspath(dirname(__file__)), *x)
+PROJECT_ROOT = here("..")
+root = lambda *x: join(abspath(PROJECT_ROOT), *x)
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -56,7 +60,7 @@ MEDIA_URL = ''
 # Don't put anything in this directory yourself; store your static files
 # in apps' "static/" subdirectories and in STATICFILES_DIRS.
 # Example: "/home/media/media.lawrence.com/static/"
-STATIC_ROOT = ''
+STATIC_ROOT = ""
 
 # URL prefix for static files.
 # Example: "http://media.lawrence.com/static/"
@@ -64,9 +68,7 @@ STATIC_URL = '/static/'
 
 # Additional locations of static files
 STATICFILES_DIRS = (
-    # Put strings here, like "/home/html/static" or "C:/www/django/static".
-    # Always use forward slashes, even on Windows.
-    # Don't forget to use absolute paths, not relative paths.
+    root("static"),
 )
 
 # List of finder classes that know how to find static files in
@@ -102,8 +104,9 @@ ROOT_URLCONF = 'django_fb.urls'
 # Python dotted path to the WSGI application used by Django's runserver.
 WSGI_APPLICATION = 'django_fb.wsgi.application'
 
-import os
-TEMPLATE_DIRS = (os.path.join(os.path.dirname(__file__), '..', 'templates').replace('\\','/'),)
+TEMPLATE_DIRS = (
+    root("templates"),
+)
 
 INSTALLED_APPS = (
     'django.contrib.auth',
@@ -133,6 +136,16 @@ AUTHENTICATION_BACKENDS = (
     'django_facebook.auth_backends.FacebookBackend',
     'django.contrib.auth.backends.ModelBackend',
 )
+
+FACEBOOK_APP_ID = "188501241310702"
+FACEBOOK_APP_SECRET = "2260825c2f5be1f7d7575e886a76055e"
+
+AUTH_PROFILE_MODEL = 'django_facebook.FacebookProfile'
+
+LOGIN_URL = '/login/'
+LOGOUT_URL = '/logout/'
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = LOGIN_URL
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to
