@@ -11,12 +11,6 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
 )
 
-urlpatterns += patterns(
-    'django.contrib.auth.views',
-    url(settings.LOGIN_URL[1:], 'login', name='login', kwargs={'template_name': 'login.html'}),
-    url(settings.LOGOUT_URL[1:], 'logout_then_login', name='logout'),
-)
-
 urlpatterns += patterns('',
     url(r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.STATIC_ROOT}),
 )
