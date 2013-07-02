@@ -1,7 +1,24 @@
 {% extends 'base.html' %}
+{% load url from future %}
+{% block extrahead %}
+{#     <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# tangler: http://ogp.me/ns/fb/tangler#">#}
+  <meta property="fb:app_id" content="188501241310702" />
+  <meta property="og:type"   content="tangler:tangle" />
+  <meta property="og:url"    content="http://dev.makeystreet.com/tangle/121/" />
+  <meta property="og:title"  content="Ironman Tangle" />
+  <meta property="og:image"  content="http://makeystreet.blob.core.windows.net/tangle/img/Iron%20Front.png" />
+{% endblock extrahead %}
 {% block content %}
     <div class="well span3 offset3">
-        <p>like tangle</p><a href="#" class="btn"><i class="icon-thumbs-up"></i></a>
-        <p>design tangle</p href="#"><a href="#" class="btn"><i class="icon-share"></i></a>
+        <form action="{% url 'fb_like' %}" method="post">
+            {% csrf_token %}
+            <input type="hidden" value="{{ request.path }}" name="next" />
+            <input type="submit" class="btn" value="like tangle"/>
+        </form>
+        <form action="{% url 'fb_design' %}" method="post">
+            {% csrf_token %}
+            <input type="hidden" value="{{ request.path }}" name="next" />
+            <input type="submit" class="btn" value="design tangle"/>
+        </form>
     </div>
 {% endblock %}

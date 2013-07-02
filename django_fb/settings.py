@@ -140,7 +140,7 @@ AUTHENTICATION_BACKENDS = (
 FACEBOOK_APP_ID = "188501241310702"
 FACEBOOK_APP_SECRET = "2260825c2f5be1f7d7575e886a76055e"
 
-AUTH_PROFILE_MODEL = 'core.MyCustomProfile'
+AUTH_PROFILE_MODULE = 'django_facebook.FacebookProfile'
 
 LOGIN_URL = '/login/'
 LOGOUT_URL = '/logout/'
@@ -184,4 +184,3 @@ if os.getcwd() == '/app':
 
 # Honor the 'X-Forwarded-Proto' header for request.is_secure()
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-FACEBOOK_LOGIN_DEFAULT_REDIRECT = '/'
