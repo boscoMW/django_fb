@@ -12,8 +12,8 @@ class Home(TemplateView):
 @facebook_required(scope='publish_actions')
 def post_like(request):
     fb = get_persistent_graph(request)
-    entity_url = 'http://dev.makeystreet.com/tangle/121/'
-    fb.set('me/og.likes', object=entity_url, message="Iron man tangle")
+    entity_url = 'http://dev.makeystreet.com/tangle/119/'
+    fb.set('me/og.likes', object=entity_url)
     messages.info(request, 'you Liked a tangle')
     return next_redirect(request)
 
