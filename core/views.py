@@ -9,6 +9,10 @@ class Home(TemplateView):
     template_name = 'index.html'
 
 
+class Tangle(TemplateView):
+    template_name = 'tangle.html'
+
+
 @facebook_required(scope='publish_actions')
 def post_like(request):
     fb = get_persistent_graph(request)
@@ -21,7 +25,7 @@ def post_like(request):
 @facebook_required(scope='publish_actions')
 def post_design(request):
     fb = get_persistent_graph(request)
-    tangle = "http://immense-stream-9442.herokuapp.com/"
+    tangle = "http://immense-stream-9442.herokuapp.com/tangle/"
     fb.set('me/tangler:design', tangle=tangle)
     messages.info(request, 'you designed a tangle')
     return next_redirect(request)

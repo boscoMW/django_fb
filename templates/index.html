@@ -1,12 +1,5 @@
 {% extends 'base.html' %}
 {% load url from future %}
-{% block extrahead %}
-  <meta property="fb:app_id" content="188501241310702" />
-  <meta property="og:type"   content="tangler:tangle" />
-  <meta property="og:url"    content="http://dev.makeystreet.com/tangle/121/" />
-  <meta property="og:title"  content="Ironman Tangle" />
-  <meta property="og:image"  content="http://makeystreet.blob.core.windows.net/tangle/img/Iron%20Front.png" />
-{% endblock extrahead %}
 {% block content %}
     <div class="well span3 offset3">
         <form action="{% url 'fb_like' %}" method="post">
